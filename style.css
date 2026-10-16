@@ -1,0 +1,15 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%}
+body{background:#fff;font-family:"Segoe UI",Arial,sans-serif;overflow:hidden}
+.splash{width:100%;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.logo{width:94px;height:105px;position:relative;transform:translateY(-2px)}
+.back-card{position:absolute;width:64px;height:82px;left:20px;top:4px;border-radius:8px;background:linear-gradient(145deg,#1689df 0%,#3158dc 52%,#6652e7 100%);transform-origin:bottom center;animation:cardMove 2.8s ease-in-out infinite}
+.paper{position:absolute;width:49px;height:61px;left:31px;top:24px;border-radius:4px;background:linear-gradient(145deg,#fff 0%,#f0f1ed 100%);z-index:3;transform-origin:bottom center;animation:paperMove 2.8s ease-in-out infinite}
+.front-card{position:absolute;width:90px;height:72px;left:2px;top:32px;border-radius:11px;background:linear-gradient(145deg,#27c3ed 0%,#1a9ee0 55%,#1764d7 100%);z-index:4;overflow:hidden}
+.front-fold{position:absolute;width:58px;height:48px;left:-8px;top:22px;border-radius:0 100% 0 0;background:linear-gradient(145deg,#49d4ef,#29b9e9);transform:rotate(8deg)}
+@keyframes cardMove{0%{transform:translateY(13px) rotate(0)}25%{transform:translateY(-3px) rotate(-7deg)}50%{transform:translateY(-7px) rotate(3deg)}75%{transform:translateY(1px) rotate(0)}100%{transform:translateY(13px) rotate(0)}}
+@keyframes paperMove{0%{transform:translateY(13px) rotate(0);opacity:0}20%{opacity:1}45%{transform:translateY(-5px) rotate(1deg)}70%{transform:translateY(0) rotate(0)}100%{transform:translateY(13px) rotate(0);opacity:0}}
+.microsoft{position:absolute;bottom:26px;display:flex;align-items:center;gap:4px;font-size:11px;color:#444}
+.ms-text{line-height:12px}
+.ms-icon{width:11px;height:11px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1px}
+.ms-icon i{display:block}.ms-icon i:nth-child(1){background:#f25022}.ms-icon i:nth-child(2){background:#7fba00}.ms-icon i:nth-child(3){background:#00a4ef}.ms-icon i:nth-child(4){background:#ffb900}
